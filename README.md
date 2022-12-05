@@ -41,6 +41,25 @@ for instance in the `src/routes/+layout.svelte` file:
 <slot />
 ```
 
+### On SvelteKit versions prior to 1.0.0-next.572
+
+This package uses `$app/navigation` from SvelteKit. If you are using a version
+of SvelteKit prior to `1.0.0-next.572`, you will need to `exclude` it in your Vite
+configuration, like so:
+
+```diff
+// vite.config.js
+import { sveltekit } from '@sveltejs/kit/vite';
+
+/** @type {import('vite').UserConfig} */
+const config = {
+  plugins: [sveltekit()],
++ optimizeDeps: { exclude: ['$app'] },
+}}
+```
+
+(see <https://github.com/sveltejs/kit/pull/7933>)
+
 ## Bar Color
 
 The progress bar does **not** have a default color, so you will need to set one. You can either set the color as a data property, as a `text-` class if you're using Tailwind/WindiCSS, or override the CSS.
