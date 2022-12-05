@@ -20,7 +20,8 @@
 				"editorconfig.editorconfig",
 				"esbenp.prettier-vscode",
 				"github.vscode-pull-request-github",
-				"VisualStudioExptTeam.vscodeintellicode"
+				"VisualStudioExptTeam.vscodeintellicode",
+				"redhat.vscode-yaml"
 			]
 		}
 	}
