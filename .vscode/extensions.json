@@ -1,0 +1,13 @@
+{
+	"recommendations": [
+		"svelte.svelte-vscode",
+		"streetsidesoftware.code-spell-checker",
+		"ardenivanov.svelte-intellisense",
+		"davidanson.vscode-markdownlint",
+		"dbaeumer.vscode-eslint",
+		"editorconfig.editorconfig",
+		"esbenp.prettier-vscode",
+		"github.vscode-pull-request-github",
+		"VisualStudioExptTeam.vscodeintellicode"
+	]
+}

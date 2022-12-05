@@ -1,55 +1,62 @@
 {
-  "name": "svelte-progress-bar",
-  "version": "3.0.2",
-  "description": "A tiny progress bar, inspired by YouTube's loader!",
-  "main": "dist/ProgressBar.cjs.js",
-  "module": "dist/ProgressBar.es.js",
-  "svelte": "src/ProgressBar.svelte",
-  "umd": "dist/ProgressBar.umd.js",
-  "files": [
-    "src",
-    "dist"
-  ],
-  "scripts": {
-    "prepublishOnly": "npm run build",
-    "test": "node src/ProgressBar.test.js",
-    "prebuild": "rm -rf dist && mkdir -p dist && rm -f docs/build.js",
-    "build": "rollup -c",
-    "postbuild": "./node_modules/.bin/babel dist/ProgressBar.umd.js --presets=@babel/env --out-dir dist --module-id ProgressBar --minified --no-comments",
-    "dev": "rollup -c -w",
-    "start": "sirv docs --dev"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/saibotsivad/svelte-progress-bar.git"
-  },
-  "keywords": [
-    "svelte",
-    "progress",
-    "load"
-  ],
-  "author": {
-    "name": "Tobias Davis",
-    "email": "tobias@davistobias.com",
-    "url": "https://davistobias.com"
-  },
-  "license": "SEE LICENSE IN LICENSE.md",
-  "bugs": {
-    "url": "https://github.com/saibotsivad/svelte-progress-bar/issues"
-  },
-  "homepage": "https://github.com/saibotsivad/svelte-progress-bar#readme",
-  "devDependencies": {
-    "@babel/cli": "^7.16.0",
-    "@babel/plugin-transform-modules-umd": "^7.16.5",
-    "@babel/preset-env": "^7.16.5",
-    "@rollup/plugin-node-resolve": "^13.1.1",
-    "jsdom": "^19.0.0",
-    "register-svelte-require": "0.0.1",
-    "rollup": "^2.61.1",
-    "rollup-plugin-npm-run": "^1.0.2",
-    "rollup-plugin-svelte": "^7.1.0",
-    "sirv-cli": "^1.0.14",
-    "svelte": "^3.44.3",
-    "uvu": "^0.5.2"
-  }
+	"name": "@prgm/sveltekit-progress-bar",
+	"description": "A Svelte progress bar that hooks to SvelteKit navigation.",
+	"author": {
+		"name": "prgm.dev",
+		"email": "contact@prgm.dev",
+		"url": "https://prgm.dev"
+	},
+	"keywords": [
+		"svelte",
+		"kit",
+		"progress",
+		"load"
+	],
+	"bugs": {
+		"url": "https://github.com/prgm-dev/sveltekit-progress-bar/issues"
+	},
+	"homepage": "https://github.com/prgm-dev/sveltekit-progress-bar#readme",
+	"license": "MIT",
+	"version": "0.0.3",
+	"repository": {
+		"type": "git",
+		"url": "github:prgm-dev/sveltekit-progress-bar"
+	},
+	"scripts": {
+		"dev": "vite dev",
+		"build": "svelte-kit sync && svelte-package",
+		"prepublishOnly": "echo 'Did you mean to publish `./package/`, instead of `./`?' && exit 1",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"test:unit": "vitest",
+		"lint": "prettier --plugin-search-dir . --check . && eslint .",
+		"format": "prettier --plugin-search-dir . --write ."
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "next",
+		"@sveltejs/kit": "next",
+		"@sveltejs/package": "next",
+		"@typescript-eslint/eslint-plugin": "^5.45.0",
+		"@typescript-eslint/parser": "^5.45.0",
+		"eslint": "^8.28.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-svelte3": "^4.0.0",
+		"prettier": "^2.8.0",
+		"prettier-plugin-svelte": "^2.8.1",
+		"svelte": "^3.53.1",
+		"svelte-check": "^2.9.2",
+		"svelte-preprocess": "^4.10.7",
+		"tslib": "^2.4.1",
+		"typescript": "^4.9.3",
+		"vite": "^3.2.4",
+		"vitest": "^0.25.3"
+	},
+	"peerDependencies": {
+		"@sveltejs/kit": "^1.0.0-next.572"
+	},
+	"type": "module",
+	"packageManager": "pnpm@7.18.0",
+	"engines": {
+		"node": ">=18"
+	}
 }

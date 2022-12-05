@@ -1,11 +1,13 @@
-# the usual suspects
-/node_modules
 .DS_Store
+node_modules
+/build
+/.svelte-kit
+/package
+.env
+.env.*
+!.env.example
 
-# personal local files
-/configuration.js
-/configuration.sh
-/fiddle.js
-
-# globbed things
-globbed-*.js
+# Ignore files for PNPM, NPM and YARN
+pnpm-lock.yaml
+package-lock.json
+yarn.lock

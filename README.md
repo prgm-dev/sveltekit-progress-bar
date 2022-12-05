@@ -1,114 +1,70 @@
-# svelte-progress-bar
+# sveltekit-progress-bar
 
-The idea is a little Svelte component (check out [the demo](https://saibotsivad.github.io/svelte-progress-bar)) that shows a cool progress bar, like what's on YouTube, or [NProgress](https://ricostacruz.com/nprogress).
+A SvelteKit component that displays a progress bar when the page is loading.
 
-You can use it in your plain old web app, without bundling or anything, using the [unpkg CDN](https://unpkg.com/):
+This component is based on the [svelte-progress-bar](https://github.com/saibotsivad/svelte-progress-bar)
+component for Svelte. It has been adapted to integrate with SvelteKit.
+
+**If you are looking for a standalone component, check out the original component.**
+
+## Demo
+
+Please refer to the [svelte-progress-bar](https://github.com/saibotsivad/svelte-progress-bar) package for a demo.
+
+## Installation
+
+In a SvelteKit project:
+
+```bash
+npm install --save-dev @prgm/sveltekit-progress-bar
+```
+
+Using `pnpm`:
+
+```bash
+pnpm add --save-dev @prgm/sveltekit-progress-bar
+```
+
+## Usage
+
+In a SvelteKit page or layout where you would like to use the component,
+for instance in the `src/routes/+layout.svelte` file:
 
 ```html
-<script src="https://unpkg.com/svelte-progress-bar/dist/ProgressBar.umd.js"></script>
-<script>
-	const progress = new ProgressBar({
-		target: document.querySelector('body')
-	})
-	// start it on a page load
-	progress.start()
-	// complete it at some point in the future
-	setTimeout(() => {
-		progress.complete()
-	}, 1000)
+<!-- +layout.svelte -->
+<script lang="ts">
+    import { ProgressBar } from '@prgm/sveltekit-progress-bar'
 </script>
-```
 
-Or to include it in your web app:
+<ProgressBar color="#7F57F1" />
 
-```js
-import ProgressBar from 'svelte-progress-bar'
-// or
-const ProgressBar = require('svelte-progress-bar')
-// then
-const progress = new ProgressBar({
-	target: document.querySelector('body')
-})
-```
-
-Or if you are using the progress bar inside a Svelte template, you might use `bind:this` like this:
-
-```html
-<script>
-	import ProgressBar from 'svelte-progress-bar'
-	let progress
-</script>
-<ProgressBar bind:this={progress} />
-<!-- then somewhere later -->
-<button on:click={() => progress.setWidthRatio(0.4)}>
-	Set to 40% Width
-</button>
-```
-
-If you were using a web app with a router, or some sort of page change event emitter, it might look like:
-
-```js
-const router = // the page/state change event emitter
-router.on('stateChangeStart', () => {
-	progress.start()
-})
-router.on('stateChangeEnd', () => {
-	progress.complete()
-})
-```
-
-Or if you had some progress event emitter that actually told you the percent of progress, you might set the progress bar width manually with something like this:
-
-```js
-const dataLoad = // some sort of data load progress event emitter
-dataLoad.on('percentDone', percent => {
-	progress.setWidthRatio(percent / 100) // must be a ratio
-})
-dataLoad.on('end', () => {
-	progress.complete()
-})
+<slot />
 ```
 
 ## Bar Color
 
-The progress bar does **not** have a default color, so you will need to set one. You can either set the color as a data property or override the CSS.
-
-JavaScript:
-
-```js
-const progress = new ProgressBar({
-	target: document.querySelector('body'),
-	props: { color: '#0366d6' }
-})
-```
+The progress bar does **not** have a default color, so you will need to set one. You can either set the color as a data property, as a `text-` class if you're using Tailwind/WindiCSS, or override the CSS.
 
 Svelte component:
 
 ```html
+<!-- Set the CSS color through an attribute: -->
 <ProgressBar color="#0366d6" />
-```
-
-Or in your CSS:
-
-```css
-.svelte-progress-bar, .svelte-progress-bar-leader {
-	background-color: #0366d6;
-}
-.svelte-progress-bar-leader {
-	color: #0366d6;
-}
+<!-- Or, if you're using Tailwind/Windi: -->
+<ProgressBar class="text-green-500" />
 ```
 
 ## Other Styles
 
-If you are using some type of navbar at the top of the page, like Bootstrap's, it is likely that you will need to change the z-index to get the progress bar to appear over the navbar:
+If you are using some type of navbar at the top of the page, like Bootstrap's,
+it is likely that you will need to change the z-index to get the progress bar to appear over the navbar:
 
 ```css
 .svelte-progress-bar {
-	z-index: 100;
+    z-index: 100;
 }
 .svelte-progress-bar-leader {
-	z-index: 101;
+    z-index: 101;
 }
 ```
 
