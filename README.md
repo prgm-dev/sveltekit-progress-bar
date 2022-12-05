@@ -106,7 +106,3 @@ These additional methods are available on an instantiated progress bar:
 * `animate()`: Start incrementing from whatever the current width is.
 * `stop()`: Stop incrementing and take no further action.
 * `setWidthRatio(ratio: number)`: Stop auto-incrementing and manually specify the width.
-
-## License
-
-Published and released under the [Very Open License](http://veryopenlicense.com).
