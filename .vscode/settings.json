@@ -3,6 +3,7 @@
 		"editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
 	},
 	"cSpell.words": [
+		"pnpm",
 		"sveltejs",
 		"sveltekit",
 		"Windi"
