@@ -165,11 +165,11 @@
 
   let barStyle: string;
   $: barStyle =
-    ((color && `background-color: ${color};`) || '') +
-    ((width && width * 100 && `width: ${width * 100}%;`) || '');
+    (color ? `background-color: ${color};` : '') +
+    (width && width * 100 ? `width: ${width * 100}%;` : '');
   // the box shadow of the leader bar uses `color` to set its shadow color
   let leaderColorStyle: string;
-  $: leaderColorStyle = (color && `background-color: ${color}; color: ${color};`) || '';
+  $: leaderColorStyle = color ? `background-color: ${color}; color: ${color};` : '';
 
   /** When navigating, this is the threshold duration in milliseconds
    * that the progress bar will wait before showing.
