@@ -166,10 +166,12 @@
   let barStyle: string;
   $: barStyle =
     (color ? `background-color: ${color};` : '') +
-    (width && width * 100 ? `width: ${width * 100}%;` : '');
+    (width && width * 100 ? `width: ${width * 100}%;` : '') +
+    `z-index: ${zIndex};`;
   // the box shadow of the leader bar uses `color` to set its shadow color
   let leaderColorStyle: string;
-  $: leaderColorStyle = color ? `background-color: ${color}; color: ${color};` : '';
+  $: leaderColorStyle =
+    (color ? `background-color: ${color}; color: ${color};` : '') + `z-index: ${zIndex + 1};`;
 
   /** When navigating, this is the threshold duration in milliseconds
    * that the progress bar will wait before showing.
@@ -225,11 +227,10 @@
     class="svelte-progress-bar {textColorClass}"
     class:running
     class:svelte-progress-bar-hiding={completed}
-    style:z-index={zIndex}
     style={barStyle}
   >
     {#if running}
-      <div class="svelte-progress-bar-leader" style={leaderColorStyle} style:z-index={zIndex + 1} />
+      <div class="svelte-progress-bar-leader" style={leaderColorStyle} />
     {/if}
   </output>
 {/if}
