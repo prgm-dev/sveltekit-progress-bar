@@ -37,6 +37,8 @@ for instance in the `src/routes/+layout.svelte` file:
 </script>
 
 <ProgressBar color="#7F57F1" />
+<!-- Or, if you're using Tailwind/Windi: -->
+<ProgressBar class="text-green-500" />
 
 <slot />
 ```
@@ -78,13 +80,8 @@ Svelte component:
 If you are using some type of navbar at the top of the page, like Bootstrap's,
 it is likely that you will need to change the z-index to get the progress bar to appear over the navbar:
 
-```css
-.svelte-progress-bar {
-    z-index: 100;
-}
-.svelte-progress-bar-leader {
-    z-index: 101;
-}
+```svelte
+<ProgressBar color="#7F57F1" zIndex={100} />
 ```
 
 ## Options

@@ -17,7 +17,7 @@
 	},
 	"homepage": "https://github.com/prgm-dev/sveltekit-progress-bar#readme",
 	"license": "MIT",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"repository": {
 		"type": "git",
 		"url": "github:prgm-dev/sveltekit-progress-bar"

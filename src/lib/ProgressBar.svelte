@@ -65,6 +65,12 @@
   let textColorClass: `text-${string}` | '' = '';
   export { textColorClass as class };
 
+  /**
+   * The `z-index` CSS property value to use for the progress bar.
+   * Be aware that the glowing effect on the bar will use this `zIndex` + 1.
+   */
+  export let zIndex: number = 1;
+
   // These are defaults that you shouldn't need to change, but are exposed here in case you do.
   export let defaultMinimum = 0.08;
   export let maximum = 0.994;
@@ -219,10 +225,11 @@
     class="svelte-progress-bar {textColorClass}"
     class:running
     class:svelte-progress-bar-hiding={completed}
+    style:z-index={zIndex}
     style={barStyle}
   >
     {#if running}
-      <div class="svelte-progress-bar-leader" style={leaderColorStyle} />
+      <div class="svelte-progress-bar-leader" style={leaderColorStyle} style:z-index={zIndex + 1} />
     {/if}
   </output>
 {/if}
@@ -234,7 +241,6 @@
     left: 0;
     height: 3px;
     transition: width 0.21s ease-in-out;
-    z-index: 1;
   }
 
   .svelte-progress-bar-hiding {
@@ -250,6 +256,5 @@
     width: 100px;
     transform: rotate(2.5deg) translate(0px, -4px);
     box-shadow: 0 0 8px;
-    z-index: 2;
   }
 </style>
