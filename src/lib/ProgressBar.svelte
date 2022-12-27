@@ -42,7 +42,7 @@
    * </div>
    */
   export let id: string | undefined = undefined;
-  /** Set to true when the progress bar is running. */
+  /** Will be set to true when the progress bar is running. */
   export let busy: boolean = false;
   $: running = busy;
   /**
@@ -72,9 +72,31 @@
   export let zIndex: number = 1;
 
   // These are defaults that you shouldn't need to change, but are exposed here in case you do.
-  export let defaultMinimum = 0.08;
+  /**
+   * The starting percent width use when the bar starts.
+   * Starting at 0 doesn't usually look very good.
+   * @default 0.08
+   */
+  let defaultMinimum = 0.08;
+  export { defaultMinimum as minimum };
+  /**
+   * The maximum percent width value to use when the bar is at the end but not marked as complete.
+   * Letting the bar stay at 100% width for a while doesn't usually look very good either.
+   * @default 0.994
+   */
   export let maximum = 0.994;
-  export let defaultSettleTime = 700;
+  /**
+   * Milliseconds to wait after the complete method is called to hide the progress bar.
+   * Letting it sit at 100% width for a very short time makes it feel more fluid.
+   * @default 700
+   */
+  let defaultSettleTime = 700;
+  export { defaultSettleTime as settleTime };
+  /**
+   * Milliseconds to wait between incrementing bar width when using
+   * the `start` (auto-increment) method.
+   * @default 700
+   */
   export let intervalTime = 700;
   export let stepSizes = [0, 0.005, 0.01, 0.02];
 
