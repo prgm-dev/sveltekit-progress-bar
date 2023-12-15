@@ -52,7 +52,7 @@
 		"vitest": "^0.26.2"
 	},
 	"peerDependencies": {
-		"@sveltejs/kit": "^1.0.0"
+		"@sveltejs/kit": "^1.0.0 || ^2.0.0"
 	},
 	"type": "module",
 	"packageManager": "pnpm@7.20.0",
