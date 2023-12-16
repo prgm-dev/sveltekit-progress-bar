@@ -2,12 +2,10 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
 {
 	"name": "Node.js & TypeScript",
-	"image": "mcr.microsoft.com/devcontainers/typescript-node:18-bullseye",
-	"features": {
-		"ghcr.io/devcontainers/features/git:1": {},
-		"ghcr.io/devcontainers/features/node:1": {}
-	},
-	"onCreateCommand": "corepack enable",
+	"image": "mcr.microsoft.com/devcontainers/typescript-node:20-bookworm",
+	"features": {},
+	"onCreateCommand": "npm uninstall -g yarn pnpm && sudo corepack enable",
+	"waitFor": "onCreateCommand",
 	"updateContentCommand": "pnpm install && pnpm svelte-kit sync",
 	"customizations": {
 		"vscode": {

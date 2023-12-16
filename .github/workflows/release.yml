@@ -9,18 +9,18 @@ jobs:
     name: Publish Package to npmjs
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
+      # Check out project
+      - uses: actions/checkout@v4
+      # Install pnpm, Node 20, and dependencies
+      - uses: pnpm/action-setup@v2
+      - uses: actions/setup-node@v4
         with:
-          version: 7
-      - uses: actions/setup-node@v3
-        with:
-          node-version: "18"
+          node-version: 20
           registry-url: "https://registry.npmjs.org"
           cache: pnpm
       - run: pnpm install
+      # Build and publish
       - run: pnpm build
-      - run: npm publish --access public --scope @prgm ./package
+      - run: npm publish --access public --scope @prgm
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

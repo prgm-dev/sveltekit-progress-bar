@@ -7,7 +7,7 @@
   and will hide when navigation is complete.
 -->
 <script lang="ts">
-  import { afterNavigate, beforeNavigate } from '$app/navigation';
+  import { afterNavigate, beforeNavigate } from "$app/navigation";
 
   // This component is a modified version of the component from the following repo:
   // https://github.com/saibotsivad/svelte-progress-bar
@@ -51,7 +51,7 @@
    * If you're using Tailwind or Windi CSS, leave this to the default
    * and set the `class` attribute to a `text-` class instead.
    */
-  export let color: string = 'currentColor';
+  export let color: string = "currentColor";
   /**
    * A Tailwind/Windi `text-` class to use to color the Progress Bar.
    *
@@ -62,7 +62,7 @@
    *
    * @example text-green-500
    */
-  let textColorClass: `text-${string}` | '' = '';
+  let textColorClass: `text-${string}` | "" = "";
   export { textColorClass as class };
 
   /**
@@ -117,7 +117,8 @@
     }
     running = true;
     updater = setInterval(() => {
-      const randomStep = stepSizes[Math.floor(Math.random() * stepSizes.length)] ?? 0;
+      const randomStep =
+        stepSizes[Math.floor(Math.random() * stepSizes.length)] ?? 0;
       const step = getIncrement(width) + randomStep;
       if (width < maximum) {
         width = width + step;
@@ -187,13 +188,14 @@
 
   let barStyle: string;
   $: barStyle =
-    (color ? `background-color: ${color};` : '') +
-    (width && width * 100 ? `width: ${width * 100}%;` : '') +
+    (color ? `background-color: ${color};` : "") +
+    (width && width * 100 ? `width: ${width * 100}%;` : "") +
     `z-index: ${zIndex};`;
   // the box shadow of the leader bar uses `color` to set its shadow color
   let leaderColorStyle: string;
   $: leaderColorStyle =
-    (color ? `background-color: ${color}; color: ${color};` : '') + `z-index: ${zIndex + 1};`;
+    (color ? `background-color: ${color}; color: ${color};` : "") +
+    `z-index: ${zIndex + 1};`;
 
   /** When navigating, this is the threshold duration in milliseconds
    * that the progress bar will wait before showing.
@@ -224,7 +226,7 @@
         // This is to avoid flickering/flashing when the navigation is fast.
         progressBarStartTimeout = setTimeout(
           () => !noNavigationProgress && start(),
-          displayThresholdMs
+          displayThresholdMs,
         );
       } else start();
     }

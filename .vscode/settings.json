@@ -2,10 +2,5 @@
 	"[markdown]": {
 		"editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
 	},
-	"cSpell.words": [
-		"pnpm",
-		"sveltejs",
-		"sveltekit",
-		"Windi"
-	],
+	"cSpell.words": ["pnpm", "sveltejs", "sveltekit", "Windi"]
 }
