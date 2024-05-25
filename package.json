@@ -48,6 +48,7 @@
 		"@sveltejs/adapter-auto": "^3.2.1",
 		"@sveltejs/kit": "^2.5.10",
 		"@sveltejs/package": "^2.3.1",
+		"@sveltejs/vite-plugin-svelte": "^3.1.0",
 		"eslint": "^8.57.0",
 		"eslint-plugin-svelte": "^2.39.0",
 		"globals": "^15.3.0",
