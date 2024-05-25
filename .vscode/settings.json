@@ -2,5 +2,7 @@
 	"[markdown]": {
 		"editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
 	},
+	"eslint.enable": true,
+	"eslint.experimental.useFlatConfig": true,
 	"cSpell.words": ["pnpm", "sveltejs", "sveltekit", "Windi"]
 }
