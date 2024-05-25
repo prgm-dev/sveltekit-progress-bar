@@ -16,6 +16,7 @@
 
   let {
     id = undefined,
+    viewTransitionName = "sveltekit-progress-bar",
     busy = $bindable(false),
     color = "currentColor",
     class: textColorClass = "",
@@ -65,6 +66,15 @@
      * </div>
      */
     id?: string | undefined;
+    /**
+     * The name of the CSS view transition to use for the progress bar.
+     * Sets the `view-transition-name` CSS property on the progress bar and leader elements.
+     *
+     * @default "sveltekit-progress-bar"
+     * @see https://developer.chrome.com/docs/web-platform/view-transitions/
+     * @see https://svelte.dev/blog/view-transitions
+     */
+    viewTransitionName?: string;
     /** Will be set to true when the progress bar is running. */
     busy?: boolean;
     /**
@@ -225,12 +235,14 @@
   const barStyle = $derived(
     (color ? `background-color: ${color};` : "") +
       (width && width * 100 ? `width: ${width * 100}%;` : "") +
-      `z-index: ${zIndex};`,
+      `z-index: ${zIndex};` +
+      `view-transition-name: ${viewTransitionName}-bar;`,
   );
   // the box shadow of the leader bar uses `color` to set its shadow color
   const leaderColorStyle = $derived(
     (color ? `background-color: ${color}; color: ${color};` : "") +
-      `z-index: ${zIndex + 1};`,
+      `z-index: ${zIndex + 1};` +
+      `view-transition-name: ${viewTransitionName}-leader;`,
   );
 
   let progressBarStartTimeout = $state<ReturnType<typeof setTimeout> | null>(
@@ -278,7 +290,7 @@
     style={barStyle}
   >
     {#if running}
-      <div class="svelte-progress-bar-leader" style={leaderColorStyle} />
+      <div class="svelte-progress-bar-leader" style={leaderColorStyle}></div>
     {/if}
   </output>
 {/if}
