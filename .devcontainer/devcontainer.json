@@ -17,7 +17,8 @@
 				"esbenp.prettier-vscode",
 				"github.vscode-pull-request-github",
 				"VisualStudioExptTeam.vscodeintellicode",
-				"redhat.vscode-yaml"
+				"redhat.vscode-yaml",
+				"github.vscode-github-actions"
 			]
 		}
 	}
