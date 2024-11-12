@@ -69,7 +69,7 @@
 		"svelte": "^5.0.0-next.1"
 	},
 	"type": "module",
-	"packageManager": "pnpm@9.1.2+sha256.19c17528f9ca20bd442e4ca42f00f1b9808a9cb419383cd04ba32ef19322aba7",
+	"packageManager": "pnpm@9.12.3+sha256.24235772cc4ac82a62627cd47f834c72667a2ce87799a846ec4e8e555e2d4b8b",
 	"engines": {
 		"node": "^20.5.0 || ^22.2.0"
 	}
