@@ -2,24 +2,23 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
 {
 	"name": "Node.js & TypeScript",
-	"image": "mcr.microsoft.com/devcontainers/typescript-node:20-bookworm",
+	"image": "mcr.microsoft.com/devcontainers/typescript-node:22-bookworm",
 	"features": {},
 	"onCreateCommand": "npm uninstall -g yarn pnpm && sudo corepack enable",
-	"waitFor": "onCreateCommand",
-	"updateContentCommand": "pnpm install && pnpm svelte-kit sync",
+	"updateContentCommand": "corepack pnpm install && corepack pnpm svelte-kit sync",
 	"customizations": {
 		"vscode": {
 			"extensions": [
 				"svelte.svelte-vscode",
 				"streetsidesoftware.code-spell-checker",
-				"ardenivanov.svelte-intellisense",
 				"davidanson.vscode-markdownlint",
 				"dbaeumer.vscode-eslint",
 				"editorconfig.editorconfig",
 				"esbenp.prettier-vscode",
 				"github.vscode-pull-request-github",
 				"VisualStudioExptTeam.vscodeintellicode",
-				"redhat.vscode-yaml"
+				"redhat.vscode-yaml",
+				"github.vscode-github-actions"
 			]
 		}
 	}

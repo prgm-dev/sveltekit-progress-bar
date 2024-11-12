@@ -13,17 +13,19 @@ Please refer to the [svelte-progress-bar](https://github.com/saibotsivad/svelte-
 
 ## Installation
 
-In a SvelteKit project:
+In a SvelteKit v2 project using Svelte v5:
 
 ```bash
 npm install --save-dev @prgm/sveltekit-progress-bar
 ```
 
-Using `pnpm`:
-
-```bash
-pnpm add --save-dev @prgm/sveltekit-progress-bar
-```
+> **Note:** This version does not support Svelte 4.
+> For use inside a SvelteKit v2 project still using **Svelte v4**, refer to
+> [v2.0.0](https://github.com/prgm-dev/sveltekit-progress-bar/tree/v2.0.0):
+>
+> ```bash
+> npm install --save-dev @prgm/sveltekit-progress-bar@2.0.0
+> ```
 
 ## Usage
 
@@ -69,18 +71,18 @@ it is likely that you will need to change the z-index to get the progress bar to
 
 You shouldn't need to play with these, they've been selected based on UX design expertise, but they're available if you need them:
 
--   `minimum` _(number, range: 0-1, default: 0.08)_: The starting percent width use when the bar starts. Starting at `0` doesn't usually look very good.
--   `maximum` _(number, range: 0-1, default: 0.994)_: The maximum percent width value to use when the bar is at the end but not marked as complete. Letting the bar stay at 100% width for a while doesn't usually look very good either.
--   `intervalTime` _(number, default: 700)_: Milliseconds to wait between incrementing bar width when using the `start` (auto-increment) method.
--   `settleTime` _(number, default: 700)_: Milliseconds to wait after the `complete` method is called to hide the progress bar. Letting it sit at 100% width for a very short time makes it feel more fluid.
+- `minimum` _(number, range: 0-1, default: 0.08)_: The starting percent width use when the bar starts. Starting at `0` doesn't usually look very good.
+- `maximum` _(number, range: 0-1, default: 0.994)_: The maximum percent width value to use when the bar is at the end but not marked as complete. Letting the bar stay at 100% width for a while doesn't usually look very good either.
+- `intervalTime` _(number, default: 700)_: Milliseconds to wait between incrementing bar width when using the `start` (auto-increment) method.
+- `settleTime` _(number, default: 700)_: Milliseconds to wait after the `complete` method is called to hide the progress bar. Letting it sit at 100% width for a very short time makes it feel more fluid.
 
 ## Methods
 
 These additional methods are available on an instantiated progress bar:
 
--   `start()`: Set the width to the minimum and increment until maximum width.
--   `complete()`: Set the width to `100%` and then hide after `settleTime`.
--   `reset()`: Set the width to minimum but do not start incrementing.
--   `animate()`: Start incrementing from whatever the current width is.
--   `stop()`: Stop incrementing and take no further action.
--   `setWidthRatio(ratio: number)`: Stop auto-incrementing and manually specify the width.
+- `start()`: Set the width to the minimum and increment until maximum width.
+- `complete()`: Set the width to `100%` and then hide after `settleTime`.
+- `reset()`: Set the width to minimum but do not start incrementing.
+- `animate()`: Start incrementing from whatever the current width is.
+- `stop()`: Stop incrementing and take no further action.
+- `setWidthRatio(ratio: number)`: Stop auto-incrementing and manually specify the width.
