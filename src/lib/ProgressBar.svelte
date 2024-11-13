@@ -9,7 +9,7 @@
 <svelte:options runes={true} />
 
 <script lang="ts">
-  import { afterNavigate, beforeNavigate } from "$app/navigation";
+  import { beforeNavigate } from "$app/navigation";
 
   // This component is a modified version of the component from the following repo:
   // https://github.com/saibotsivad/svelte-progress-bar
@@ -245,9 +245,8 @@
       `view-transition-name: ${viewTransitionName}-leader;`,
   );
 
-  let progressBarStartTimeout = $state<ReturnType<typeof setTimeout> | null>(
-    null,
-  );
+  let progressBarStartTimeout: ReturnType<typeof setTimeout> | null = null;
+
   beforeNavigate((nav) => {
     if (progressBarStartTimeout) {
       clearTimeout(progressBarStartTimeout);
@@ -265,15 +264,15 @@
           displayThresholdMs,
         );
       } else start();
-    }
-  });
 
-  afterNavigate(() => {
-    if (progressBarStartTimeout) {
-      clearTimeout(progressBarStartTimeout);
-      progressBarStartTimeout = null;
+      nav.complete.catch().finally(() => {
+        if (progressBarStartTimeout) {
+          clearTimeout(progressBarStartTimeout);
+          progressBarStartTimeout = null;
+        }
+        complete();
+      });
     }
-    complete();
   });
 </script>
 
