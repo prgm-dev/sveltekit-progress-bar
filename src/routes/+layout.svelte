@@ -11,6 +11,7 @@
     <li><a href="/">Home</a></li>
     <li><a href="/fast">Fast load</a></li>
     <li><a href="/slow">Slow load</a></li>
+    <li><a href="/redirects">Redirected load</a></li>
   </ul>
 </nav>
 
