@@ -14,6 +14,7 @@ jobs:
       - name: Install package manager
         run: |
           npm uninstall -g yarn pnpm
+          npm install -g corepack@latest
           corepack enable
       # Install Node and dependencies
       - uses: actions/setup-node@v4

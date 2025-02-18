@@ -4,7 +4,7 @@
 	"name": "Node.js & TypeScript",
 	"image": "mcr.microsoft.com/devcontainers/typescript-node:22-bookworm",
 	"features": {},
-	"onCreateCommand": "npm uninstall -g yarn pnpm && sudo corepack enable",
+	"onCreateCommand": "npm uninstall -g yarn pnpm && npm install -g corepack@latest && sudo corepack enable",
 	"updateContentCommand": "corepack pnpm install && corepack pnpm svelte-kit sync",
 	"customizations": {
 		"vscode": {
