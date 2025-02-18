@@ -1,5 +1,7 @@
 # sveltekit-progress-bar
 
+[![NPM Version](https://img.shields.io/npm/v/%40prgm%2Fsveltekit-progress-bar) ![NPM Downloads](https://img.shields.io/npm/dm/%40prgm%2Fsveltekit-progress-bar)](https://www.npmjs.com/package/@prgm/sveltekit-progress-bar)
+
 A SvelteKit component that displays a progress bar when the page is loading.
 
 This component is based on the [svelte-progress-bar](https://github.com/saibotsivad/svelte-progress-bar)
