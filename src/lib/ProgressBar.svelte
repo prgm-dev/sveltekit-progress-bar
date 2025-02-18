@@ -9,7 +9,7 @@
 <svelte:options runes={true} />
 
 <script lang="ts">
-  import { beforeNavigate } from "$app/navigation";
+  import { afterNavigate, beforeNavigate } from "$app/navigation";
 
   // This component is a modified version of the component from the following repo:
   // https://github.com/saibotsivad/svelte-progress-bar
@@ -47,6 +47,11 @@
   let width = $state(0);
   // Internal non-reactive state
   let updater: ReturnType<typeof setInterval> | null = null;
+  /**
+   * A timeout used to delay the display of the progress bar
+   * (to prevent the progress bar from flashing in and out of display)
+   */
+  let progressBarStartTimeout: ReturnType<typeof setTimeout> | null = null;
 
   // Update the busy prop when the internal `running` variable changes.
   $effect.pre(() => {
@@ -195,6 +200,11 @@
    * amount of time so the user can feel the completion, then hide and reset.
    */
   export const complete = (settleTime = defaultSettleTime) => {
+    // Prevent any future scheduled progress bar starts
+    if (progressBarStartTimeout) {
+      clearTimeout(progressBarStartTimeout);
+      progressBarStartTimeout = null;
+    }
     if (updater) clearInterval(updater);
     if (!running) return;
     width = 1;
@@ -246,8 +256,6 @@
       `view-transition-name: ${viewTransitionName}-leader;`,
   );
 
-  let progressBarStartTimeout: ReturnType<typeof setTimeout> | null = null;
-
   beforeNavigate((nav) => {
     if (progressBarStartTimeout) {
       clearTimeout(progressBarStartTimeout);
@@ -267,13 +275,13 @@
       } else start();
 
       nav.complete.catch().finally(() => {
-        if (progressBarStartTimeout) {
-          clearTimeout(progressBarStartTimeout);
-          progressBarStartTimeout = null;
-        }
         complete();
       });
     }
+  });
+
+  afterNavigate(() => {
+    complete();
   });
 </script>
 
