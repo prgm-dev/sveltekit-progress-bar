@@ -41,7 +41,7 @@ for instance in the `src/routes/+layout.svelte` file:
 </script>
 
 <ProgressBar color="#7F57F1" />
-<!-- Or, if you're using Tailwind/Windi: -->
+<!-- Or, if you're using Tailwind: -->
 <ProgressBar class="text-green-500" />
 
 <slot />
@@ -49,14 +49,14 @@ for instance in the `src/routes/+layout.svelte` file:
 
 ## Bar Color
 
-The progress bar does **not** have a default color, so you will need to set one. You can either set the color as a data property, as a `text-` class if you're using Tailwind/WindiCSS, or override the CSS.
+The progress bar does **not** have a default color, so you will need to set one. You can either set the color as a data property, as a `text-` class if you're using Tailwind, or override the CSS.
 
 Svelte component:
 
 ```html
 <!-- Set the CSS color through an attribute: -->
 <ProgressBar color="#0366d6" />
-<!-- Or, if you're using Tailwind/Windi: -->
+<!-- Or, if you're using Tailwind: -->
 <ProgressBar class="text-green-500" />
 ```
 
