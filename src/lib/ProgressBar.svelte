@@ -43,9 +43,10 @@
 
   // Internal private state.
   let running = $state(false);
-  let updater = $state<ReturnType<typeof setInterval> | null>(null);
   let completed = $state(false);
   let width = $state(0);
+  // Internal non-reactive state
+  let updater: ReturnType<typeof setInterval> | null = null;
 
   // Update the busy prop when the internal `running` variable changes.
   $effect.pre(() => {
